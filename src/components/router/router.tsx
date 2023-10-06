@@ -5,22 +5,23 @@ import {
 } from "react-router-dom";
 import { CharacterList } from "../character-list/character-list";
 import { CharacterPageElement } from "../character-page/character-page";
+import { ReactElement } from "react";
 
 const router = createBrowserRouter([
 	{
 		path: "/",
-		element: CharacterList(),
+		element: <CharacterList />,
 		loader: async () => fetch("http://localhost:8080/character")
 	},
 	{
 		path: "/character/:id",
-		element: CharacterPageElement(),
+		element: <CharacterPageElement />,
 		// @ts-ignore
-		loader: async (params) => fetch("http://localhost:8080/character/" + params.id as string)
+		loader: async ({params}) => fetch("http://localhost:8080/character/" + params.id)
 	}
 ]);
 
-export function Router(): React.ReactElement {
+export function Router(): ReactElement {
 	return (
 		<React.StrictMode>
 			<RouterProvider router={router} />

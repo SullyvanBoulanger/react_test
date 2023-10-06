@@ -4,9 +4,8 @@ import { mockCharacterList } from './data/character-list.mock-data';
 
 jest.mock('react-router-dom', () => ({
 	...jest.requireActual('react-router-dom'),
-	useLoaderData: () => ({
-	  data: mockCharacterList,
-	}),
+	useLoaderData: () => mockCharacterList,
+	useLocation: () => jest.fn()
 }));
 
 const renderCharacterList = () => {

@@ -3,13 +3,14 @@ import { useLoaderData } from "react-router-dom";
 import { Character } from "../../models/character";
 
 export function CharacterPageElement(): ReactElement {
+
 	const data = useLoaderData();
 	const character = data as Character;
 
 	return (
 		<div>
 			<h1>Character Page</h1>
-			<p>Name : {character.name}</p>
+			<p>Name : <span>{character.name}</span></p>
 			<p>Height : {character.height}</p>
 			<p>Mass : {character.mass}</p>
 			<p>Films : 
